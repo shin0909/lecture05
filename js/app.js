@@ -3,6 +3,7 @@ var inputoperandB = document.querySelector("#operand_b");
 var inputOperator = document.querySelector("#operator");
 var output = document.querySelector("#output");
 var error = document.querySelector("#error");
+var operator2 = 0
 
 var showError = function(){
 	error.setAttribute("class", "");
@@ -13,9 +14,10 @@ var hideError = function(){
 };
 
 var showResult = function(result){
-	if(operator="%"){
+	if(operator2=="1"){
         output.value = result + "余り" + result2;
-    }else if(operator!="%"){
+    }else if(operator2=="0"){
+        
         output.value = result + "";
     }else{
 		showError();
@@ -102,14 +104,19 @@ var startCalc = function(){
 	if(isReady(operator, operandA, operandB)){
 		var result = 0;
 		if(operator == "+"){
+            operator2=0
 			result = add(operandA, operandB);
 		}else if(operator == "-"){
+            operator2=0
 			result = subtract(operandA, operandB)
 		}else if(operator == "*"){
-			result = multiply(operandA, operandB);
+			operator2=0
+            result = multiply(operandA, operandB);
 		}else if(operator == "/"){
-			result = divide(operandA, operandB);
+            operator2=0
+            result = divide(operandA, operandB);
 		}else if(operator == "%"){
+            operator2=1
 			result = modulus(operandA, operandB);
             result2 = modulus2(operandA, operandB);
 		}
