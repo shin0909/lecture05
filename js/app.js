@@ -33,7 +33,7 @@ var divide = function(a, b){
 };
 
 var modulus = function(a, b){
-	return a % b;
+	return Math.sqrt(a*a+b*b);
 };
 
 var isOperator = function(operator){
