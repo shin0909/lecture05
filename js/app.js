@@ -13,9 +13,14 @@ var hideError = function(){
 };
 
 var showResult = function(result){
-	output.value = result + "";
-};
-
+	if(operator="%"){
+        output.value = result + "余り" + result2;
+    }else if(operator!="%"){
+        output.value = result + "";
+    }else{
+		showError();
+	};
+}
 var add = function(a, b){
 	return a + b;
 };
@@ -29,11 +34,14 @@ var multiply = function(a, b){
 };
 
 var divide = function(a, b){
-	return a / b;
+	return Math.sqrt(a*a+b*b);
 };
 
 var modulus = function(a, b){
-	return Math.sqrt(a*a+b*b);
+	return Math.floor(a/b);
+};
+var modulus2 = function(a, b){
+	return a % b;
 };
 
 var isOperator = function(operator){
@@ -103,6 +111,7 @@ var startCalc = function(){
 			result = divide(operandA, operandB);
 		}else if(operator == "%"){
 			result = modulus(operandA, operandB);
+            result2 = modulus2(operandA, operandB);
 		}
 		showResult(result);
 	}else{
